@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;500;700;800&family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Results summary component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --font-color1: hsl(0, 0%, 100%);
+      }
+
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      body {
+        font-family: "Hanken Grotesk", sans-serif;
+      }
+
+      .parent-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: hsl(212, 45%, 89%);
+      }
+      .child-container {
+        background-color: hsl(0, 0%, 100%);
+        /* height: 450px; */
+        /* width: 670px; */
+        /* height: clamp(450px, 75%, 450px); */
+        /* width: clamp(670px, 75%, 670psx); */
+        /* width: 500px; */
+        min-width: 300px;
+        max-width: 670px;
+        /* min-height: 450px;
+        max-height: 450px; */
+        border-radius: 1rem;
+        box-shadow: 0 0 5px 0 hsl(100, 10%, 50%);
+        display: flex;
+      }
+      .result-container {
+        background-color: hsl(252, 100%, 67%);
+        background-color: hsl(241, 81%, 54%);
+        /* height: 450px; */
+        /* width: 335px; */
+        width: 50%;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .main-score {
+        background-color: rgb(87, 49, 193);
+        height: 170px;
+        width: 170px;
+        /* min-height: 100px;
+        min-width: 100px; */
+
+        /* width: 40%; */
+
+        /* background-color: hsla(241, 72%, 46%, 0); */
+        border-radius: 100000px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        /* box-shadow: 0 0 5px 0 hsl(226, 37%, 49%); */
+        /* z-index: 20; */
+      }
+
+      .result {
+        color: hsla(0, 0%, 100%, 80%);
+        font-size: 1.5rem;
+        padding-top: 1.3rem;
+        /* font-weight: 700; */
+      }
+      .big-result {
+        color: var(--font-color1);
+        font-size: 4rem;
+      }
+      .small-result {
+        color: hsla(0, 0%, 100%, 50%);
+        font-size: 1rem;
+      }
+
+      .result-description-header {
+        color: var(--font-color1);
+        font-size: 2rem;
+        text-align: center;
+        /* padding-top: 3rem; */
+      }
+      .result-description {
+        color: hsla(0, 0%, 100%, 70%);
+        font-size: 1rem;
+        padding: 0rem 3.5rem 1rem 3.5rem;
+        text-align: center;
+      }
+      .summary-container {
+        display: flex;
+        flex-direction: column;
+        /* padding: 2rem; */
+        /* justify-content: space-evenly; */
+        /* background-color: bisque; */
+        width: 50%;
+        /* width: 335px; */
+      }
+      .summary-box {
+        /* background-color: blue; */
+        padding: 0.7rem;
+        border-radius: 0.5rem;
+        /* margin-bottom: 0.5rem; */
+        margin: 0 1.7rem 0.9rem 1.7rem;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .summary-header {
+        font-size: 1.5rem;
+        /* padding-bottom: 1rem; */
+        padding: 2.5rem 1.7rem 2rem 1.7rem;
+      }
+
+      .summary-button {
+        margin: 1.5rem 1.7rem 1.5rem 1.7rem;
+        padding: 0.7rem;
+        border: none;
+        border-radius: 1000000px;
+        outline: none;
+        background-color: hsl(224, 30%, 37%);
+        color: var(--font-color1);
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .red {
+        color: hsl(0, 100%, 67%);
+        background-color: hsla(0, 100%, 67%, 10%);
+      }
+      .green {
+        color: hsl(166, 100%, 37%);
+        background-color: hsla(166, 100%, 37%, 10%);
+      }
+      .orange {
+        color: hsl(39, 100%, 56%);
+        background-color: hsla(39, 100%, 56%, 10%);
+      }
+      .cobalt {
+        color: hsl(234, 85%, 45%);
+        background-color: hsla(234, 85%, 45%, 10%);
+      }
+
+      @media (width <= 450px) {
+        html {
+          font-size: 15px;
+        }
+        .main-score {
+          height: 150px;
+          width: 150px;
+        }
+      }
+      @media (width <= 430px) {
+        html {
+          font-size: 14px;
+        }
+        .result-description {
+          padding: 0rem 3rem 1rem 3rem;
+        }
+      }
+      @media (width <= 400px) {
+        html {
+          font-size: 13px;
+        }
+        .main-score {
+          height: 130px;
+          width: 130px;
+        }
+      }
+
+      @media (width <= 375px) {
+        html {
+          font-size: 19px;
+        }
+        .child-container {
+          /* background-color: hsl(0, 100%, 67%); */
+          flex-direction: column;
+          /* width: calc(670px / 2); */
+          width: 335px;
+          height: 900px;
+        }
+        .result-container {
+          width: 100%;
+          height: 50%;
+        }
+        .summary-container {
+          width: 100%;
+          height: 50%;
+        }
+
+        .main-score {
+          height: 190px;
+          width: 190px;
+        }
+        .summary-header {
+          padding: 1.5rem 1.7rem 1.3rem 1.7rem;
+        }
+        .summary-button {
+          margin: 0rem 1.7rem 0 1.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent-container">
+      <div class="child-container">
+        <div class="result-container">
+          <p class="result">Your Result</p>
+          <div class="main-score">
+            <p class="big-result">76</p>
+            <p class="small-result">of 100</p>
+          </div>
+
+          <p class="result-description-header">Great</p>
+          <p class="result-description">
+            You scored higher than 65% of the people who have taken these tests.
+          </p>
+        </div>
+        <div class="summary-container">
+          <div class="summary-header">Summary</div>
+          <div class="summary-box red">
+            <p class="summary-text-title">Reaction</p>
+            <div></div>
+            <p class="summary-text">80 / 100</p>
+          </div>
+          <div class="summary-box orange">
+            <p class="summary-text-title">Memory</p>
+            <div></div>
+            <p class="summary-text">92 / 100</p>
+          </div>
+          <div class="summary-box green">
+            <p class="summary-text-title">Verbal</p>
+            <div></div>
+            <p class="summary-text">61 / 100</p>
+          </div>
+          <div class="summary-box cobalt">
+            <p class="summary-text-title">Visual</p>
+            <div></div>
+            <p class="summary-text">72 / 100</p>
+          </div>
+          <button class="summary-button">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </body>
+</html>
